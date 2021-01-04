@@ -1,7 +1,7 @@
-package org.itstep;
+﻿package org.itstep;
 
 // FIXME: реализовать интерфейс Comparable<Tea>. Метод compareTo() должен производить сравнение по цене
-public class Tea {
+public class Tea implements Comparable<Tea> {
     private final String name;
     private final double price;
 
@@ -11,7 +11,24 @@ public class Tea {
     }
 
     @Override
+    public int compareTo(Tea other) {
+        int tmp = 2;
+        if (this.price > other.price) {
+            tmp = 1;
+        } else {
+            if (this.price == other.price) {
+                tmp = 0;
+            } else {
+                if (this.price < other.price) {
+                    tmp = -1;
+                }
+            }
+        }
+        return tmp;
+    }
+
+    @Override
     public String toString() {
-        return "Чай: " + name + " Цена: " + price;
+        return "Tea: " + name + " | Price: " + price;
     }
 }
